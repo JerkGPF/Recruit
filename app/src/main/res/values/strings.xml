@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">recruit</string>
+
+    <string name="bottom_bar1">首页</string>
+    <string name="bottom_bar2">发现</string>
+    <string name="bottom_bar3">消息</string>
+    <string name="bottom_bar4">我的</string>
+
+    <string name="menu1">我的名片</string>
+    <string name="menu2">我的投递</string>
+    <string name="menu3">我的积分</string>
+    <string name="menu4">每日签到</string>
+
+    <string name="menu_item1">我的关注</string>
+    <string name="menu_item2">我的收藏</string>
+    <string name="menu_item3">意见反馈</string>
+    <string name="menu_item4">帮助中心</string>
+    <string name="menu_item5">关于我们</string>
+    <string name="menu_item6">我的设置</string>
+    <string name="without_file">没有文件</string>
+    <string name="go_back">返回</string>
+    <string name="local_upload">本地上传</string>
+    <string name="upload">上传</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

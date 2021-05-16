@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activities.common.login.LoginFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:paddingBottom="30dp"
+        android:background="@drawable/bg_btn1"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_phone_login"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="40dp"
+            android:drawableLeft="@drawable/icon_phone"
+            android:background="@drawable/bg_et"
+            android:hint="请输入账号"
+            android:inputType="phone"
+            android:drawablePadding="10dp"
+            android:paddingLeft="10dp"
+            android:textSize="15sp" />
+        <EditText
+            android:id="@+id/et_pwd_login"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_et"
+            android:drawableLeft="@drawable/icon_lock"
+            android:drawablePadding="10dp"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="登      录"
+            android:background="@drawable/bg_button_login"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="40dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
+        <TextView
+            android:layout_marginRight="25dp"
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="游客登录"
+            android:textSize="15sp" />
+        <TextView
+            android:layout_marginLeft="25dp"
+            android:id="@+id/tv_HR_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="企业登录"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

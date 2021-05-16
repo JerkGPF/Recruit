@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.hr.HrIndexFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#6982ff"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="人才市场"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </androidx.appcompat.widget.Toolbar>
+        <!-- TODO: Update blank fragment layout -->
+        <com.jwenfeng.library.pulltorefresh.PullToRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/refresh">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:id="@+id/rRecyclerview"
+                android:layout_height="wrap_content">
+            </androidx.recyclerview.widget.RecyclerView>
+        </com.jwenfeng.library.pulltorefresh.PullToRefreshLayout>
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_add"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_margin="16dp" />
+</RelativeLayout>

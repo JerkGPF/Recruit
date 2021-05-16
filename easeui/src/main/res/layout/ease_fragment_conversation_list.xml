@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gpfei.recruit.utils.view.MyLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hyphenate="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:orientation="vertical">
+	<androidx.appcompat.widget.Toolbar
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:background="#6982ff"
+		android:elevation="2dp">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:text="消息中心"
+			android:textColor="#fff"
+			android:textSize="18sp" />
+	</androidx.appcompat.widget.Toolbar>
+	<com.hyphenate.easeui.widget.EaseTitleBar
+	    android:id="@+id/title_bar"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    hyphenate:titleBarTitle="@string/session"
+	    />
+    
+    <include layout="@layout/ease_search_bar" />
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fl_error_item"
+        >
+    </FrameLayout>
+
+
+    <com.hyphenate.easeui.widget.EaseConversationList
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        hyphenate:cvsListPrimaryTextSize="16sp"
+         />
+
+</com.gpfei.recruit.utils.view.MyLayout>
