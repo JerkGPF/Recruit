@@ -10,9 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.SelectionBean;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

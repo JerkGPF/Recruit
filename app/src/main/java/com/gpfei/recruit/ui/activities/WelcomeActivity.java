@@ -5,19 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.User;
 import com.gpfei.recruit.ui.activities.common.MainActivity;
 import com.gpfei.recruit.ui.activities.common.login.LoginAndRegisterActivity;
-import com.gpfei.recruit.ui.activities.hr.HrDataActivity;
 import com.gpfei.recruit.ui.activities.hr.HrMainActivity;
 import com.gpfei.recruit.utils.SmileToast;
-import com.gpfei.recruit.utils.ToastUtils;
 import com.hyphenate.chat.EMClient;
 
 import org.json.JSONArray;
@@ -28,11 +21,6 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.QueryListener;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

@@ -10,20 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.SignInBean;
-import com.gpfei.recruit.beans.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.List;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

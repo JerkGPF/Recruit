@@ -9,20 +9,15 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.gpfei.recruit.R;
 import com.gpfei.recruit.adapters.DayAdapter;
-import com.gpfei.recruit.beans.SelectAndResume;
-import com.gpfei.recruit.beans.DayBean;
-import com.gpfei.recruit.beans.User;
 import com.gpfei.recruit.ui.activities.common.JobWebDetailsActivity;
 import com.gpfei.recruit.utils.DividerItemDecoration;
 import com.gpfei.recruit.utils.ToastUtils;
@@ -38,14 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 import okhttp3.Call;
 import okhttp3.Callback;

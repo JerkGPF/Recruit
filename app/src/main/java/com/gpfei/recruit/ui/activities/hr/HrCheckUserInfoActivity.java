@@ -1,12 +1,9 @@
 package com.gpfei.recruit.ui.activities.hr;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -15,23 +12,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.MyUser;
 import com.gpfei.recruit.ui.activities.MessageActivity;
-import com.gpfei.recruit.ui.activities.common.EditUserInfoActivity;
 import com.gpfei.recruit.ui.activities.common.FileWebDetailsActivity;
-import com.gpfei.recruit.ui.activities.common.JobWebDetailsActivity;
-import com.gpfei.recruit.ui.activities.common.MyDataActivity;
-import com.gpfei.recruit.ui.activities.common.MyFileActivity;
-import com.gpfei.recruit.ui.activities.common.login.LoginAndRegisterActivity;
 import com.gpfei.recruit.utils.DownloadUtil;
-import com.gpfei.recruit.utils.SmileToast;
 import com.gpfei.recruit.utils.ToastUtils;
 import com.hyphenate.easeui.EaseConstant;
-import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,17 +26,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.DownloadFileListener;
-import cn.bmob.v3.listener.QueryListener;
-import cn.bmob.v3.listener.UpdateListener;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

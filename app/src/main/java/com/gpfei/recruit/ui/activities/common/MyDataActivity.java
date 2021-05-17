@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,8 +16,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.MyUser;
-import com.gpfei.recruit.ui.activities.hr.HrDataActivity;
 import com.gpfei.recruit.utils.ToastUtils;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
@@ -28,12 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.List;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -63,6 +55,12 @@ public class MyDataActivity extends AppCompatActivity implements View.OnClickLis
         editor = sp.edit();
         editor.commit();
 
+        showUserInfo();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         showUserInfo();
     }
 

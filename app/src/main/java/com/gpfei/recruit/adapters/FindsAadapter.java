@@ -10,18 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.Finds;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 
-import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
 
 
 public class FindsAadapter extends RecyclerView.Adapter<com.gpfei.recruit.adapters.FindsAadapter.MyViewHolder> implements View.OnClickListener {
     private Context content;
-    private List<Finds> datalist=new ArrayList<>();
+    private List<Map<String,String>> mapList;
     /**
      * 点击事件
      * @param context
@@ -33,9 +31,9 @@ public class FindsAadapter extends RecyclerView.Adapter<com.gpfei.recruit.adapte
         this.mItemClickListener = mItemClickListener;
     }
 
-    public FindsAadapter(Context context, List<Finds> datalist) {
+    public FindsAadapter(Context context, List<Map<String,String>> mapList) {
         this.content=context;
-        this.datalist=datalist;
+        this.mapList=mapList;
     }
 
     @Override
@@ -48,17 +46,17 @@ public class FindsAadapter extends RecyclerView.Adapter<com.gpfei.recruit.adapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.tv_title.setText(datalist.get(position).getTitle());
-        holder.tv_content.setText(datalist.get(position).getContent());
-        holder.tv_time.setText(datalist.get(position).getCreatedAt());
-        holder.tv_count_finds.setText(datalist.get(position).getCount()+"人看过");
-        Glide.with(content).load(datalist.get(position).getImage()).error(R.drawable.load_bg).into(holder.iv_image);
+        holder.tv_title.setText(mapList.get(position).get("title"));
+        holder.tv_content.setText(mapList.get(position).get("content"));
+        holder.tv_time.setText(mapList.get(position).get("createdtime"));
+        holder.tv_count_finds.setText(mapList.get(position).get("count")+"人看过");
+        Glide.with(content).load(mapList.get(position).get("image")).error(R.drawable.load_bg).into(holder.iv_image);
         holder.itemView.setTag(position);
     }
 
     @Override
     public int getItemCount() {
-        return datalist.size();
+        return mapList.size();
     }
 
     @Override

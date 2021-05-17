@@ -3,7 +3,6 @@ package com.gpfei.recruit.ui.fragments.hr;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import okhttp3.Call;
@@ -11,11 +10,8 @@ import okhttp3.Callback;
 import okhttp3.FormBody;
 
 
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.fragment.app.Fragment;
 
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -29,32 +25,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.DayBean;
-import com.gpfei.recruit.beans.HrUser;
-import com.gpfei.recruit.beans.MyUser;
-import com.gpfei.recruit.beans.SelectAndResume;
-import com.gpfei.recruit.beans.SignInBean;
-import com.gpfei.recruit.beans.User;
 import com.gpfei.recruit.ui.activities.common.AboutActivity;
 import com.gpfei.recruit.ui.activities.common.FeedBackActivity;
 import com.gpfei.recruit.ui.activities.common.HelpActivity;
-import com.gpfei.recruit.ui.activities.common.MyApplyActivity;
-import com.gpfei.recruit.ui.activities.common.MyAttentionActivity;
-import com.gpfei.recruit.ui.activities.common.MyCollectActivity;
-import com.gpfei.recruit.ui.activities.common.MyDataActivity;
-import com.gpfei.recruit.ui.activities.common.MyInfoActivity;
 import com.gpfei.recruit.ui.activities.common.MyIntegralActivity;
 import com.gpfei.recruit.ui.activities.common.SettingActivity;
 import com.gpfei.recruit.ui.activities.common.login.LoginAndRegisterActivity;
 import com.gpfei.recruit.ui.activities.hr.HrDataActivity;
 import com.gpfei.recruit.ui.activities.hr.MyPublishActivity;
 import com.gpfei.recruit.ui.activities.hr.PostActivity;
-import com.gpfei.recruit.ui.fragments.common.UserFragment;
 import com.gpfei.recruit.utils.ToastUtils;
-import com.gpfei.recruit.utils.UploadUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -63,14 +44,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobPointer;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.UpdateListener;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

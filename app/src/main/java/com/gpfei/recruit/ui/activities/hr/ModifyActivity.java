@@ -3,20 +3,15 @@ package com.gpfei.recruit.ui.activities.hr;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.JsonArray;
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.DayBean;
 import com.gpfei.recruit.utils.OkHttpUtil;
 import com.gpfei.recruit.utils.SmileToast;
-import com.gpfei.recruit.utils.ToastUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,10 +21,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.QueryListener;
-import cn.bmob.v3.listener.UpdateListener;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

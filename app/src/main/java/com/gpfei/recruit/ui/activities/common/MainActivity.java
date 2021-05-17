@@ -8,13 +8,10 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.SignInBean;
-import com.gpfei.recruit.beans.User;
 import com.gpfei.recruit.ui.activities.MessageActivity;
 import com.gpfei.recruit.ui.fragments.common.FindFragment;
 import com.gpfei.recruit.ui.fragments.common.HomeFragment;
@@ -23,10 +20,6 @@ import com.gpfei.recruit.ui.fragments.common.UserFragment;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.ui.EaseConversationListFragment;
-
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SaveListener;
 
 public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 

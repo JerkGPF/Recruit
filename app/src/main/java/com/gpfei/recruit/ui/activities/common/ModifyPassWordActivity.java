@@ -21,9 +21,6 @@ import com.gpfei.recruit.utils.ToastUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.UpdateListener;
 
 public class ModifyPassWordActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView iv_back;

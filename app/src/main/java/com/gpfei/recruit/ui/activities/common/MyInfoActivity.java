@@ -27,7 +27,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.MyUser;
 import com.gpfei.recruit.utils.OkHttpUtil;
 import com.gpfei.recruit.utils.SmileToast;
 import com.gpfei.recruit.utils.ToastUtils;
@@ -35,8 +34,6 @@ import com.gpfei.recruit.utils.UploadUtils;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
 import com.longsh.optionframelibrary.OptionBottomDialog;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
 
 import org.json.JSONArray;
 import org.json.JSONException;

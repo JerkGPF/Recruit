@@ -1,10 +1,8 @@
 package com.gpfei.recruit.ui.fragments.common;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,31 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
 import android.text.Html;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.adapters.DayAdapter;
 import com.gpfei.recruit.adapters.SelectionAdapter;
-import com.gpfei.recruit.beans.DayBean;
-import com.gpfei.recruit.beans.SelectAndResume;
-import com.gpfei.recruit.beans.User;
 import com.gpfei.recruit.ui.activities.common.JobWebDetailsActivity;
 import com.gpfei.recruit.utils.DividerItemDecoration;
-import com.gpfei.recruit.utils.OkHttpUtil;
 import com.gpfei.recruit.utils.SmileToast;
-import com.gpfei.recruit.utils.view.SmileToastView;
 import com.gpfei.recruit.utils.ToastUtils;
 import com.jwenfeng.library.pulltorefresh.BaseRefreshListener;
 import com.jwenfeng.library.pulltorefresh.PullToRefreshLayout;
-import com.longsh.optionframelibrary.OptionCenterDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,12 +37,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobPointer;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.UpdateListener;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;

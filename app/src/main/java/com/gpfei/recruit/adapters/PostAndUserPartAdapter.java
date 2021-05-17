@@ -11,9 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.PostAndUserPart;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

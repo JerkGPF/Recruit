@@ -1,12 +1,10 @@
 package com.gpfei.recruit.ui.activities.common;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,10 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.MyUser;
 import com.gpfei.recruit.utils.DataCleanManager;
 import com.gpfei.recruit.utils.ToastUtils;
 import com.hyphenate.EMCallBack;
@@ -26,19 +22,9 @@ import com.longsh.optionframelibrary.OptionBottomDialog;
 import com.longsh.optionframelibrary.OptionMaterialDialog;
 import com.xuexiang.xupdate.XUpdate;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.bmob.v3.BmobUser;
-import constant.UiType;
-import listener.Md5CheckResultListener;
-import listener.UpdateDownloadListener;
-import model.UiConfig;
-import model.UpdateConfig;
-import update.UpdateAppUtils;
 
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView iv_back;

@@ -3,29 +3,21 @@ package com.gpfei.recruit.ui.fragments.hr;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.gpfei.recruit.R;
 
-import com.gpfei.recruit.adapters.HRIndexAdapter;
 import com.gpfei.recruit.adapters.PostAndUserAdapter;
-import com.gpfei.recruit.beans.DayBean;
-import com.gpfei.recruit.beans.PostAndUser;
-import com.gpfei.recruit.beans.SelectAndResume;
-import com.gpfei.recruit.beans.User;
 
 import com.gpfei.recruit.ui.activities.hr.HrCheckUserInfoActivity;
 import com.gpfei.recruit.utils.DividerItemDecoration;
@@ -43,14 +35,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobPointer;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

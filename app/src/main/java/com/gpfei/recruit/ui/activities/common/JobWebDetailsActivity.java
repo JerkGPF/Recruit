@@ -6,42 +6,21 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.DayBean;
-import com.gpfei.recruit.beans.HrUser;
-import com.gpfei.recruit.beans.MyUser;
-import com.gpfei.recruit.beans.SelectAndResume;
-import com.gpfei.recruit.beans.User;
 import com.gpfei.recruit.ui.activities.MessageActivity;
 import com.gpfei.recruit.ui.activities.common.login.LoginAndRegisterActivity;
-import com.gpfei.recruit.ui.activities.hr.HrDataActivity;
 import com.gpfei.recruit.utils.ToastUtils;
 import com.hyphenate.easeui.EaseConstant;
-import com.longsh.optionframelibrary.OptionCenterDialog;
 import com.mob.MobSDK;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.http.I;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.QueryListener;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
 public class JobWebDetailsActivity extends AppCompatActivity implements View.OnClickListener {

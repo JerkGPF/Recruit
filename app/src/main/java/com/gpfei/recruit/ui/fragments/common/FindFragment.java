@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,38 +19,42 @@ import android.widget.RelativeLayout;
 import com.bumptech.glide.Glide;
 import com.gpfei.recruit.R;
 import com.gpfei.recruit.adapters.FindsAadapter;
-import com.gpfei.recruit.beans.BannerBean;
-import com.gpfei.recruit.beans.Finds;
 import com.gpfei.recruit.ui.activities.common.FindsWebDetailsActivity;
 import com.gpfei.recruit.utils.DividerItemDecoration;
-import com.gpfei.recruit.utils.ToastUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoaderInterface;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FindFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FindFragment extends Fragment implements OnBannerListener,View.OnClickListener {
     private Banner mBanner;
     private ArrayList<String> titles_list;
     private ArrayList<String> images_list;
     private RecyclerView mRecyclerview;
-    private List<Finds> datalist;
     private LinearLayout ll_load;
     private Button btn_load;
     private RelativeLayout rl_network_error;
+
+    private List<Map<String,String>> mapsBanner;
+    private List<Map<String,String>> mapsFind;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,42 +62,115 @@ public class FindFragment extends Fragment implements OnBannerListener,View.OnCl
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_find, container, false);
         initView(view);
-        getBannerData();
-        loadList();
+        getData();
         return view;
     }
+    private void getData() {
+        String getUrl = "http://114.117.0.103:8080/recruit/finds/getAll";
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder().url(getUrl).build();
+                Response response = null;
+                try {
+                    response = client.newCall(request).execute();
+                    String responsedata = response.body().string();
+                    jx(responsedata);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
-    private void initView(View view) {
-        mBanner = (Banner) view.findViewById(R.id.mBanner);
-        mRecyclerview = (RecyclerView) view.findViewById(R.id.mRecyclerview);
-        ll_load = (LinearLayout) view.findViewById(R.id.ll_load);
-        btn_load = (Button) view.findViewById(R.id.btn_load);
-        btn_load.setOnClickListener(this);
-        rl_network_error = (RelativeLayout) view.findViewById(R.id.rl_network_error);
     }
 
-    //获取轮播图后台数据
-    private void getBannerData() {
-        //放图片地址和标题的集合
-        titles_list=new ArrayList<>();
-        images_list=new ArrayList<>();
-        BmobQuery<BannerBean> query=new BmobQuery<BannerBean>();
-        query.findObjects(new FindListener<BannerBean>() {
-            @Override
-            public void done(List<BannerBean> list, BmobException e) {
-                if (e==null){
-                    for (BannerBean bannerbean:list){
-                        //添加数据到集合
-                        titles_list.add(bannerbean.getBtitle());
-                        images_list.add(bannerbean.getBimage());
-                        setBanner(titles_list,images_list);
+    private void jx(String responsedata) {
+        mapsBanner = new ArrayList<>();
+        mapsFind = new ArrayList<>();
+        try {
+            Map<String,String> mapBanner;
+            Map<String,String> mapFind;
+            JSONObject jsonObject = new JSONObject(responsedata);
+            int flag = jsonObject.getInt("code");//获取返回值flag的内容
+            if (flag == 100) {
+                JSONObject data = jsonObject.optJSONObject("extend");  //第二层解析
+                JSONArray items = data.optJSONArray("data");
+                //第三层解析
+                for (int i =0;i<items.length();i++){
+                    mapBanner = new HashMap<>();
+                    mapFind = new HashMap<>();
+                    JSONObject object = items.getJSONObject(i);
+                    if (object.getBoolean("isbanner")){
+                        mapBanner.put("btitle",object.getString("btitle"));
+                        mapBanner.put("bimage",object.getString("bimage"));
+                        mapsBanner.add(mapBanner);
+                    }else {
+                        mapFind.put("title",object.getString("title"));
+                        mapFind.put("content",object.getString("content"));
+                        mapFind.put("url",object.getString("url"));
+                        mapFind.put("image",object.getString("image"));
+                        mapFind.put("count",object.getString("count"));
+                        mapsFind.add(mapFind);
                     }
-                }else{
-                    Log.e("banner","轮播图数据获取失败----"+e);
                 }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                showJob();
             }
         });
     }
+
+    private void showJob() {
+        //放图片地址和标题的集合
+        titles_list=new ArrayList<>();
+        images_list=new ArrayList<>();
+        for (int i =0;i<mapsBanner.size();i++){
+            titles_list.add(mapsBanner.get(i).get("btitle"));
+            images_list.add(mapsBanner.get(i).get("bimage"));
+            setBanner(titles_list,images_list);
+        }
+        LinearLayoutManager llm = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        mRecyclerview.setLayoutManager(llm);
+        //添加分割线
+        mRecyclerview.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
+        //适配器
+        FindsAadapter adapter = new FindsAadapter(getContext(), mapsFind);
+        mRecyclerview.setAdapter(adapter);
+        //隐藏加载view
+        ll_load.setVisibility(View.GONE);
+        rl_network_error.setVisibility(View.GONE);
+        //点击事件
+        adapter.setmItemClickListener(new FindsAadapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(getContext(), FindsWebDetailsActivity.class);
+                intent.putExtra("url", mapsFind.get(position).get("url"));
+                startActivityForResult(intent, 100);
+            }
+        });
+    }
+
+
+    private void initView(View view) {
+        mBanner = view.findViewById(R.id.mBanner);
+        mRecyclerview = view.findViewById(R.id.mRecyclerview);
+        ll_load = view.findViewById(R.id.ll_load);
+        btn_load = view.findViewById(R.id.btn_load);
+        btn_load.setOnClickListener(this);
+        rl_network_error = view.findViewById(R.id.rl_network_error);
+    }
+
     //设置轮播图
     private void setBanner(ArrayList<String> titles_list, ArrayList<String> images_list) {
         //设置banner样式
@@ -135,57 +211,11 @@ public class FindFragment extends Fragment implements OnBannerListener,View.OnCl
         }
     }
 
-    //加载列表数据
-    private void loadList() {
-        datalist = new ArrayList<>();
-        //获取后台数据
-        BmobQuery<Finds> query = new BmobQuery<Finds>();
-        query.findObjects(new FindListener<Finds>() {
-            @Override
-            public void done(final List<Finds> list, BmobException e) {
-                if (e == null) {
-                    //添加数据到集合
-                    datalist.addAll(list);
-                    //禁止滑动
-                    LinearLayoutManager llm = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true) {
-                        @Override
-                        public boolean canScrollVertically() {
-                            return false;
-                        }
-                    };
-                    mRecyclerview.setLayoutManager(llm);
-                    //添加分割线
-                    mRecyclerview.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
-                    //适配器
-                    FindsAadapter adapter = new FindsAadapter(getContext(), datalist);
-                    mRecyclerview.setAdapter(adapter);
-                    //隐藏加载view
-                    ll_load.setVisibility(View.GONE);
-                    rl_network_error.setVisibility(View.GONE);
-                    //点击事件
-                    adapter.setmItemClickListener(new FindsAadapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(int position) {
-                            Intent intent = new Intent(getContext(), FindsWebDetailsActivity.class);
-                            intent.putExtra("url", list.get(position).getUrl());
-                            startActivityForResult(intent, 100);
-                        }
-                    });
-
-                } else {
-                    rl_network_error.setVisibility(View.VISIBLE);
-                    btn_load.setText("重新加载");
-                    ll_load.setVisibility(View.GONE);
-                    ToastUtils.showTextToast(getContext(), "获取失败啦~请检查网络！"+e.getMessage());
-                }
-            }
-        });
-    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_load:
-                loadList();
+                getData();
                 btn_load.setText("加载中...");
                 break;
         }

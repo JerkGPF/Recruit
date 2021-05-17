@@ -10,16 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.gpfei.recruit.R;
 import com.gpfei.recruit.adapters.HRIndexAdapter;
-import com.gpfei.recruit.beans.MyUser;
 import com.gpfei.recruit.ui.activities.hr.HrCheckUserInfoActivity;
 import com.gpfei.recruit.ui.activities.hr.PublishActivity;
 import com.gpfei.recruit.utils.DividerItemDecoration;
@@ -37,9 +34,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -98,6 +92,13 @@ public class HrIndexFragment extends Fragment implements View.OnClickListener {
         editor = sp.edit();
         editor.commit();
         showInfo();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("resume");
+        equal();
     }
 
     //显示用户资料

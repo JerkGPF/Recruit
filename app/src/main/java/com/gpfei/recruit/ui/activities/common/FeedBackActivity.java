@@ -13,11 +13,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.FeedBack;
+import com.gpfei.recruit.utils.OkHttpUtil;
 import com.gpfei.recruit.utils.ToastUtils;
 
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SaveListener;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FeedBackActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView iv_back;
@@ -93,19 +93,42 @@ public class FeedBackActivity extends AppCompatActivity implements View.OnClickL
 
     //添加反馈信息
     private void setFeedBack() {
-        FeedBack feedback=new FeedBack();
-        feedback.setTitle(tv_show_feedback_class.getText().toString());
-        feedback.setContent(et_feedback.getText().toString());
-        feedback.save(new SaveListener<String>() {
+        String url = "http://114.117.0.103:8080/recruit/feedback/addFeedBackInfo";
+
+        String content = et_feedback.getText().toString();
+        String title = tv_show_feedback_class.getText().toString();
+        new Thread(new Runnable() {
             @Override
-            public void done(String s, BmobException e) {
-                if (e==null){
-                    ToastUtils.showImageToast(FeedBackActivity.this, "反馈成功！");
-                    finish();
-                }else {
-                    ToastUtils.showImageToast(FeedBackActivity.this, "反馈失败！");
-                }
+            public void run() {
+                OkHttpUtil okHttpUtil = OkHttpUtil.getInstance();
+                Map<String, Object> map = new HashMap<>();
+                map.put("content",content);
+                map.put("title",title);
+                okHttpUtil.getDataFromePostJson(url,map, new OkHttpUtil.OnCallback() {
+                    @Override
+                    public void callback(String result) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtils.showImageToast(FeedBackActivity.this, "反馈成功！");
+                                finish();
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtils.showImageToast(FeedBackActivity.this, "反馈失败！");
+                            }
+                        });
+                    }
+                });
             }
-        });
+        }).start();
+
     }
 }

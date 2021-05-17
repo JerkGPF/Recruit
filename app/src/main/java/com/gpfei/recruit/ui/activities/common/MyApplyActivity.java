@@ -2,48 +2,24 @@ package com.gpfei.recruit.ui.activities.common;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.adapters.DayAdapter;
-import com.gpfei.recruit.beans.DayBean;
-import com.gpfei.recruit.beans.SelectAndResume;
-import com.gpfei.recruit.beans.User;
 import com.gpfei.recruit.ui.fragments.common.FullTimeFragment;
-import com.gpfei.recruit.ui.fragments.common.HomeFragment;
 import com.gpfei.recruit.ui.fragments.common.PartTimeFragment;
 import com.gpfei.recruit.ui.fragments.common.PracticeFragment;
-import com.gpfei.recruit.ui.fragments.common.home.Fragment1;
-import com.gpfei.recruit.ui.fragments.common.home.Fragment2;
-import com.gpfei.recruit.ui.fragments.common.home.Fragment3;
-import com.gpfei.recruit.utils.DividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobPointer;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
 public class MyApplyActivity extends AppCompatActivity {
     private TabLayout my_tab;

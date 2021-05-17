@@ -16,11 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.DayBean;
-import com.gpfei.recruit.beans.MyUser;
-import com.gpfei.recruit.ui.activities.common.MyInfoActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

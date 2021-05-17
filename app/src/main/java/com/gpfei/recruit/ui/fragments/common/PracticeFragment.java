@@ -14,16 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.adapters.DayAdapter;
-import com.gpfei.recruit.adapters.SelectionAdapter;
 import com.gpfei.recruit.adapters.WeekendAdapter;
-import com.gpfei.recruit.beans.PracticeAndResume;
-import com.gpfei.recruit.beans.SelectionBean;
-import com.gpfei.recruit.beans.User;
-import com.gpfei.recruit.beans.WeekendBean;
 import com.gpfei.recruit.ui.activities.common.JobWebDetailsActivity;
 import com.gpfei.recruit.utils.DividerItemDecoration;
 import com.gpfei.recruit.utils.SmileToast;
@@ -41,11 +34,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobPointer;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

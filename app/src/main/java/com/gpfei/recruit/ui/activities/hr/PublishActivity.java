@@ -2,7 +2,6 @@ package com.gpfei.recruit.ui.activities.hr;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,19 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gpfei.recruit.R;
-import com.gpfei.recruit.beans.DayBean;
-import com.gpfei.recruit.beans.HrUser;
-import com.gpfei.recruit.beans.MyUser;
-import com.gpfei.recruit.beans.SelectionBean;
-import com.gpfei.recruit.beans.User;
-import com.gpfei.recruit.beans.WeekendBean;
-import com.gpfei.recruit.ui.activities.common.EditUserInfoActivity;
-import com.gpfei.recruit.ui.activities.common.MyInfoActivity;
-import com.gpfei.recruit.ui.activities.common.login.LoginAndRegisterActivity;
-import com.gpfei.recruit.ui.fragments.hr.HrIndexFragment;
 import com.gpfei.recruit.utils.OkHttpUtil;
 import com.gpfei.recruit.utils.SmileToast;
-import com.gpfei.recruit.utils.ToastUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,15 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.TimerTask;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.http.I;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
-import cn.bmob.v3.listener.UpdateListener;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
