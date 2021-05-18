@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ListView;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMMessage;
@@ -13,6 +14,8 @@ import com.hyphenate.easeui.adapter.EaseConversationAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class EaseConversationList extends ListView{
     
@@ -30,6 +33,7 @@ public class EaseConversationList extends ListView{
     protected EaseConversationAdapter adapter;
     protected List<EMConversation> conversations = new ArrayList<EMConversation>();
     protected List<EMConversation> passedListRef = null;
+    int number = 0;
     
     
     public EaseConversationList(Context context, AttributeSet attrs) {
@@ -61,9 +65,9 @@ public class EaseConversationList extends ListView{
         this.init(conversationList, null);
     }
 
-    public void init(List<EMConversation> conversationList, EaseConversationListHelper helper){
+    public void init(final List<EMConversation> conversationList, EaseConversationListHelper helper) {
         conversations = conversationList;
-        if(helper != null){
+        if (helper != null) {
             this.conversationListHelper = helper;
         }
         adapter = new EaseConversationAdapter(context.getApplicationContext(), 0, conversationList);
@@ -75,7 +79,12 @@ public class EaseConversationList extends ListView{
         adapter.setTimeColor(timeColor);
         adapter.setTimeSize(timeSize);
         setAdapter(adapter);
+
+
     }
+
+
+
     
     Handler handler = new Handler() {
         @Override

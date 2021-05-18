@@ -25,7 +25,7 @@
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/job" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,9 +61,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="By gpfei development"
+                    android:text="Daily Job"
                     android:textColor="@color/gray"
-                    android:textSize="11sp" />
+                    android:textSize="20sp" />
                 <TextView
                     android:id="@+id/tv_version"
                     android:layout_width="wrap_content"

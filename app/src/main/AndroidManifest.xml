@@ -22,10 +22,15 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 捕获屏幕所需权限，Q后新增权限(多人音视频屏幕分享使用) -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
+    <!-- 百度地图定位配置(其他定位权限SDK必需权限中已包含) start -->
+    <!-- 这个权限用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 百度地图定位配置 end -->
+
     <application
         android:name=".EaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/job"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -66,6 +71,7 @@
         <activity android:name=".ui.activities.common.login.LoginAndRegisterActivity" />
         <activity android:name=".ui.activities.common.JobWebDetailsActivity" />
         <activity android:name=".ui.activities.common.SearchActivity" />
+        <activity android:name="com.hyphenate.easeui.ui.EaseBaiduMapActivity"/>
         <activity android:name=".ui.activities.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -109,6 +115,13 @@
             android:name="com.hyphenate.chat.EMJobService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- 声明SDK所需的receiver -->
+
+        <!-- 百度地图所需的service -->
+
+
+        <service android:name="com.baidu.location.f" android:process=":remote" android:enabled="true"/>
+
+        <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="Ye10chsydAUyAe3St7K3V7l1Gei7orku"/>
         <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />

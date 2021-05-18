@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -21,8 +23,10 @@ import com.hyphenate.chat.EMConversation;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.ui.EaseConversationListFragment;
 
-public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
 
+import q.rorbin.badgeview.QBadgeView;
+
+public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener, MessageFragment.MyListener {
     private RadioButton rb1;
     private RadioButton rb2;
     private RadioButton rb3;
@@ -32,13 +36,25 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     private FindFragment findFragment;
     private MessageFragment messageFragment;
     private UserFragment userFragment;
+    private Button btn;//红点显示
+
+    QBadgeView badge;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     private void initView() {
@@ -48,6 +64,8 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         rb2 = findViewById(R.id.rb2);
         rb3 = findViewById(R.id.rb3);
         rb4 = findViewById(R.id.rb4);
+        btn= findViewById(R.id.bt);
+
 
         //设置大小比例
         Drawable dr1=getResources().getDrawable(R.drawable.bottom_bar_home_selector);
@@ -73,8 +91,10 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         rb1.setChecked(true);
 
 
-    }
+        badge = (QBadgeView) new QBadgeView(MainActivity.this).bindTarget(btn);
+        badge.setShowShadow(false);
 
+    }
 
 
     @Override
@@ -103,7 +123,9 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
                 }
                 break;
             case R.id.rb3:
+
                 if (messageFragment==null){
+
                     messageFragment=new MessageFragment();
                     messageFragment.setConversationListItemClickListener(new EaseConversationListFragment.EaseConversationListItemClickListener() {
                         @Override
@@ -144,5 +166,21 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         if (userFragment != null) {
             fragmentTransaction.hide(userFragment);
         }
+    }
+    @Override
+    public void sendContent(int info) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (info!=0){
+                    //btn.setVisibility(View.GONE);
+                    System.out.println("info>>>>"+info);
+                    badge.setBadgeNumber(info);
+                }else {
+                    badge.hide(true);
+                    System.out.println("info<<<<"+info);
+                }
+            }
+        });
     }
 }
