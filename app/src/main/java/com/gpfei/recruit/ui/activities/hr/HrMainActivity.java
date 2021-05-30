@@ -13,11 +13,13 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.gpfei.recruit.R;
 import com.gpfei.recruit.ui.activities.MessageActivity;
+import com.gpfei.recruit.ui.activities.common.MainActivity;
 import com.gpfei.recruit.ui.fragments.common.FindFragment;
 import com.gpfei.recruit.ui.fragments.common.HomeFragment;
 import com.gpfei.recruit.ui.fragments.common.MessageFragment;
@@ -32,15 +34,22 @@ import com.hyphenate.easeui.ui.EaseConversationListFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HrMainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
+import q.rorbin.badgeview.QBadgeView;
+
+public class HrMainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener,MessageFragment.MyListener {
     private RadioButton rb_index, rb_message, rb_my,rb_find;
     private RadioGroup rg_bottom_bar;
 
 
     private HrIndexFragment indexFragment;
-    private HrMessageFragment messageFragment;
+    private MessageFragment messageFragment;
     private HrMyFragment myFragment;
     private FindFragment findFragment;
+
+    private Button btn;//红点显示
+
+    QBadgeView badge;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +63,7 @@ public class HrMainActivity extends FragmentActivity implements RadioGroup.OnChe
         rb_index = findViewById(R.id.rb_index);
         rb_message = findViewById(R.id.rb_message);
         rb_my = findViewById(R.id.rb_my);
+        btn= findViewById(R.id.bt);
         rg_bottom_bar = findViewById(R.id.rg_bottom_bar);
         rb_find = findViewById(R.id.rb_find);
         //设置大小比例
@@ -78,6 +88,9 @@ public class HrMainActivity extends FragmentActivity implements RadioGroup.OnChe
         //注册RadioGroup的事件监听
         rg_bottom_bar.setOnCheckedChangeListener(this);
         rb_index.setChecked(true);
+
+        badge = (QBadgeView) new QBadgeView(HrMainActivity.this).bindTarget(btn);
+        badge.setShowShadow(false);
     }
 
 
@@ -107,7 +120,7 @@ public class HrMainActivity extends FragmentActivity implements RadioGroup.OnChe
                 break;
             case R.id.rb_message:
                 if (messageFragment==null){
-                    messageFragment=new HrMessageFragment();
+                    messageFragment=new MessageFragment();
                     messageFragment.setConversationListItemClickListener(new EaseConversationListFragment.EaseConversationListItemClickListener() {
                         @Override
                         public void onListItemClicked(EMConversation conversation) {
@@ -149,4 +162,20 @@ public class HrMainActivity extends FragmentActivity implements RadioGroup.OnChe
     }
 
 
+    @Override
+    public void sendContent(int info) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (info!=0){
+                    //btn.setVisibility(View.GONE);
+                    System.out.println("info>>>>"+info);
+                    badge.setBadgeNumber(info);
+                }else {
+                    badge.hide(true);
+                    System.out.println("info<<<<"+info);
+                }
+            }
+        });
+    }
 }

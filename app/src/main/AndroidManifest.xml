@@ -72,14 +72,9 @@
         <activity android:name=".ui.activities.common.JobWebDetailsActivity" />
         <activity android:name=".ui.activities.common.SearchActivity" />
         <activity android:name="com.hyphenate.easeui.ui.EaseBaiduMapActivity"/>
+        <activity android:name=".ui.activities.common.MainActivity"/>
+        <activity android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity"/>
         <activity android:name=".ui.activities.WelcomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ui.activities.common.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

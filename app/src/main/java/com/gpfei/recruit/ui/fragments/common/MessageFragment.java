@@ -40,7 +40,7 @@ public class MessageFragment extends EaseConversationListFragment{
 
     private void initData() {
         // run in a second
-        final long timeInterval = 1000;
+        final long timeInterval = 500;
         Runnable runnable = new Runnable() {
             public void run() {
                 while (true) {

@@ -1,9 +1,12 @@
 package com.gpfei.recruit.ui.activities.hr;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -12,10 +15,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.gpfei.recruit.R;
 import com.gpfei.recruit.ui.activities.MessageActivity;
 import com.gpfei.recruit.ui.activities.common.FileWebDetailsActivity;
+import com.gpfei.recruit.ui.activities.common.MyDataActivity;
 import com.gpfei.recruit.utils.DownloadUtil;
 import com.gpfei.recruit.utils.ToastUtils;
 import com.hyphenate.easeui.EaseConstant;
@@ -34,6 +40,7 @@ import okhttp3.Response;
 public class HrCheckUserInfoActivity extends AppCompatActivity {
     private ImageView iv_back;
     private TextView tv_title;
+    private ImageView iv_user_head;
     private TextView tv_name,tv_phone,tv_sex,tv_birth,tv_qq,tv_email,tv_induce,tv_experience;
     private FloatingActionButton fab,check_file,down_file;
     String username;
@@ -54,6 +61,7 @@ public class HrCheckUserInfoActivity extends AppCompatActivity {
         iv_back = findViewById(R.id.iv_back);
         tv_title = findViewById(R.id.tv_title);
         tv_title.setText("求职者信息");
+        iv_user_head = findViewById(R.id.iv_user_head);
 
         tv_phone = findViewById(R.id.tv_phone);
         tv_name = findViewById(R.id.tv_name);
@@ -203,6 +211,16 @@ public class HrCheckUserInfoActivity extends AppCompatActivity {
                                 }
                                 tv_birth.setText(object.getString("birthday"));
 
+                                String head = object.getString("head");
+                                //圆形头像
+                                Glide.with(HrCheckUserInfoActivity.this).load(head).asBitmap().centerCrop().into(new BitmapImageViewTarget(iv_user_head) {
+                                    @Override
+                                    protected void setResource(Bitmap resource) {
+                                        RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(HrCheckUserInfoActivity.this.getResources(), resource);
+                                        circularBitmapDrawable.setCircular(true);
+                                        iv_user_head.setImageDrawable(circularBitmapDrawable);
+                                    }
+                                });
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
